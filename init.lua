@@ -10,6 +10,12 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.api.nvim_create_user_command("LspClients", function()
+    local clients = vim.lsp.get_active_clients()
+    for _, client in pairs(clients) do
+        print("Client: " .. client.name .. " (ID: " .. client.id .. ") - Buffer: " .. client.bufnr)
+    end
+end, {})
 
 require("vim-options")
 require("lazy").setup("plugins")

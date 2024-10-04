@@ -33,12 +33,6 @@ return {
 			lspconfig.stimulus_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.stylua.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.tlint.setup({
-				capabilities = capabilities,
-			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
@@ -57,13 +51,4 @@ return {
 			require("telescope").load_extension("ui-select")
 		end,
 	},
-    {
-        "stevearc/conform.nvim",
-        optional = true,
-        opts = {
-            formatters_by_ft = {
-                php = { { "pint", "php_cs_fixer" } },
-            },
-        },
-    },
 }
